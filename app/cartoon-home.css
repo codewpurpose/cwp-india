@@ -1,0 +1,175 @@
+/* Keep the original CWP page structure, while warming the colours and giving
+   display text a softly rounded character. Body copy keeps the site font. */
+.cartoon-home {
+  --home-page: #fcf4e8;
+  --home-white: #fffbf5;
+  --home-ink: #15120c;
+  --home-ink-soft: #4f483d;
+  --home-ink-quiet: #6b6255;
+  --home-hairline: rgba(30, 60, 44, 0.12);
+  --home-moss: #397554;
+  --home-moss-hover: #2a5038;
+  background: var(--home-page);
+  color: var(--home-ink);
+}
+.cartoon-home h1,
+.cartoon-home h2,
+.cartoon-home .home-display,
+.cartoon-home .home-serif {
+  font-family: var(--font-playful-heading), var(--font-home-serif), sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+.cartoon-home header { background: var(--home-page); }
+.cartoon-home .home-btn { border-radius: 999px; box-shadow: none; }
+.cartoon-home .home-btn-fill {
+  background: var(--home-moss);
+  border-color: var(--home-moss);
+}
+.cartoon-home .home-btn-fill:hover {
+  background: var(--home-moss-hover);
+  border-color: var(--home-moss-hover);
+}
+.cartoon-home .home-card { border-radius: 1rem; }
+.cartoon-home a:focus-visible,
+.cartoon-home button:focus-visible {
+  outline: 2px solid #397554;
+  outline-offset: 3px;
+}
+
+/* Stats sit on a drawn route rather than in a row of tiles. */
+.cartoon-home .home-stats-roadmap {
+  position: relative;
+  width: 100%;
+  max-width: 85rem;
+  min-height: 11.25rem;
+  margin-inline: auto;
+}
+.cartoon-home .home-stats-list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  min-height: inherit;
+  margin: 0;
+  padding-inline: 2.5rem;
+  list-style: none;
+}
+.cartoon-home .home-stats-route {
+  position: absolute;
+  pointer-events: none;
+}
+.cartoon-home .home-stats-route-wide {
+  inset: 0 2.5rem;
+  display: block;
+  width: calc(100% - 5rem);
+  height: 100%;
+}
+.cartoon-home .home-stats-route-mobile { display: none; }
+.cartoon-home .home-stats-route-base {
+  fill: none;
+  stroke: #9cae7c;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.cartoon-home .home-stats-route-center {
+  fill: none;
+  stroke: #fcf4e8;
+  stroke-width: 1.5;
+  stroke-dasharray: 1 9;
+  stroke-linecap: round;
+}
+.cartoon-home .home-stat-stop {
+  position: relative;
+  min-width: 0;
+}
+.cartoon-home .home-stat-content {
+  position: absolute;
+  inset: 0.6rem 0 auto;
+  padding-inline: 0.3rem;
+  text-align: center;
+}
+.cartoon-home .home-stat-value {
+  color: var(--home-moss);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
+  line-height: 1;
+}
+.cartoon-home .home-stat-label {
+  margin-top: 0.55rem;
+  color: var(--home-ink-soft);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+.cartoon-home .home-stat-marker {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 0.95rem;
+  aspect-ratio: 1;
+  border: 3px solid var(--home-moss);
+  border-radius: 50%;
+  background: var(--home-page);
+  box-shadow: 0 0 0 3px rgba(252, 244, 232, 0.8);
+  transform: translate(-50%, -50%);
+}
+@media (max-width: 767px) {
+  .cartoon-home .home-stats-roadmap { min-height: 0; }
+  .cartoon-home .home-stats-list {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    padding: 0;
+  }
+  .cartoon-home .home-stats-route-wide { display: none; }
+  .cartoon-home .home-stats-route-mobile {
+    top: 0;
+    left: 0;
+    display: block;
+    width: 3rem;
+    height: 100%;
+  }
+  .cartoon-home .home-stat-stop {
+    display: flex;
+    min-height: 5.5rem;
+    align-items: center;
+    padding-left: 4rem;
+  }
+  .cartoon-home .home-stat-content {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    padding: 0;
+    text-align: left;
+  }
+  .cartoon-home .home-stat-value { font-size: 1.75rem; }
+  .cartoon-home .home-stat-label {
+    margin-top: 0;
+    font-size: 0.875rem;
+  }
+  .cartoon-home .home-stat-marker { left: 1.5rem; }
+}
+
+/* Keep the original homepage sections and interactions, but let the content
+   breathe without a white tile around every item. */
+.cartoon-home .home-card,
+.cartoon-home .home-card-accent {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+.cartoon-home .home-lift { transition: color 180ms ease, transform 180ms ease; }
+.cartoon-home .home-lift:hover { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+  .cartoon-home .home-lift { transition: none; }
+  .cartoon-home .home-lift:hover { transform: none; }
+}
+.cartoon-home {
+  --home-space-section: 3.5rem;
+  --home-space-section-lg: 4.5rem;
+}
+.cartoon-home .proof-point-strip {
+  background: #f5ebdb;
+  color: #2b2419;
+  font-family: var(--font-home-sans), system-ui, sans-serif;
+}
+.cartoon-home .proof-point-join { border-color: rgba(30, 60, 44, 0.28); }

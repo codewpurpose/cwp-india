@@ -1,26 +1,750 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-input: var(--input);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --font-sans: var(--font-home-sans);
+  --font-mono: var(--font-home-mono);
+  --font-heading: var(--font-home-serif);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --background: oklch(0.968 0.014 79);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(0.99 0.008 79);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(0.99 0.008 79);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.94 0.02 79);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.94 0.02 79);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.91 0.025 79);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== CodeWithPurpose India home styles ===== */
+.home-root {
+  overflow-x: hidden;
+  --home-page: #fcf4e8;
+  --home-white: #fffbf5;
+  /* Warm near-black. The old #0a0e19 was blue-black, which fights a cream page
+   * — the classic tell of a palette assembled from two different systems. */
+  --home-ink: #15120c;
+  --home-ink-hover: #2b2419;
+  --home-grey-400: #f5ebdb;
+  --home-grey-450: #efe3d2;
+  --home-grey-500: #e0d4c4;
+  --home-grey-600: #cecece;
+  --home-grey-700: #818181;
+  --home-grey-800: #636363;
+  --home-grey-900: #1f1f1f;
+  --home-moss: #1e3c2c;
+  --home-moss-hover: #2a5038;
+  /* Radix Grass 4 / 11 — the global site imports these from
+   * @radix-ui/colors/grass.css; inlined here so the palette matches without
+   * the dependency. */
+  --home-pistachio: #daf1db;
+  --home-link-green: #2a7e3b;
+  --home-fern: var(--home-link-green);
+  /* Udemy's brand purple and its hover, used as-is. Reserved for enrolment —
+   * the one action that hands the reader to another site. */
+  --home-violet: #a435f0;
+  --home-violet-hover: #8710d8;
+  --home-border: 0.5px solid var(--home-grey-500);
+
+  /* --- tonal range ----------------------------------------------------- */
+  --home-sage: #6d9b7f; /* mid green — dividers, quiet marks */
+  --home-moss-deep: #162c20; /* below moss, for weight */
+  /* Body and caption ink, both warm so they sit on cream rather than over it. */
+  --home-ink-soft: #4f483d; /* body copy — ~7.7:1 on the page */
+  --home-ink-quiet: #6b6255; /* captions and labels — ~5.2:1 */
+  --home-hairline: rgba(30, 60, 44, 0.1);
+  --home-hairline-strong: rgba(30, 60, 44, 0.18);
+
+  /* Use the same warm light palette for Tailwind/shadcn controls on every
+     route, not only the marketing homepage. */
+  --background: var(--home-page);
+  --foreground: var(--home-ink);
+  --card: var(--home-white);
+  --card-foreground: var(--home-ink);
+  --popover: var(--home-white);
+  --popover-foreground: var(--home-ink);
+  --primary: var(--home-moss);
+  --primary-foreground: #fffbf5;
+  --secondary: var(--home-grey-400);
+  --secondary-foreground: var(--home-ink);
+  --muted: var(--home-grey-400);
+  --muted-foreground: var(--home-ink-soft);
+  --accent: var(--home-pistachio);
+  --accent-foreground: var(--home-moss-deep);
+  --border: var(--home-grey-500);
+  --input: var(--home-grey-500);
+  --ring: var(--home-fern);
+  --sidebar: var(--home-white);
+  --sidebar-foreground: var(--home-ink);
+  --sidebar-primary: var(--home-moss);
+  --sidebar-primary-foreground: #fffbf5;
+  --sidebar-accent: var(--home-grey-400);
+  --sidebar-accent-foreground: var(--home-ink);
+  --sidebar-border: var(--home-grey-500);
+  --sidebar-ring: var(--home-fern);
+
+  /* Warm-tinted rather than neutral black: a grey shadow on cream reads dirty. */
+  --home-shadow-sm: 0 1px 2px rgba(46, 38, 24, 0.05);
+  --home-shadow-md: 0 2px 4px rgba(46, 38, 24, 0.05), 0 8px 20px rgba(46, 38, 24, 0.06);
+  --home-shadow-lg: 0 4px 8px rgba(46, 38, 24, 0.05), 0 18px 44px rgba(46, 38, 24, 0.09);
+
+  /* --- section rhythm --------------------------------------------------
+   * One value, applied by .home-flow. */
+  --home-space-section: 4rem;
+  --home-space-section-lg: 8rem;
+
+  font-family: var(--font-home-sans), system-ui, sans-serif;
+  background: var(--home-page);
+  color: var(--home-ink);
+  /* Archivo runs slightly wider than Inter at the same size, so the old
+   * -0.02em tracking closes it up too far. */
+  letter-spacing: -0.011em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fraunces carries optical-size, SOFT and WONK axes. The defaults here are the
+ * section-heading voice: sober, barely wonky. .home-display below opens all
+ * three up for headline sizes, so one family covers both without a second
+ * webfont. */
+.home-serif {
+  font-family: var(--font-home-serif), Georgia, serif;
+  font-weight: 480;
+  letter-spacing: -0.012em;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 14, "WONK" 0;
+}
+/* Headline voice: lighter, softer, and slightly wonky. Only for h1-scale type —
+ * WONK's angled terminals turn to mush below about 2rem. */
+.home-display {
+  font-family: var(--font-home-serif), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.021em;
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 50, "WONK" 1;
+}
+.proof-point-strip {
+  background: #1e3c2c;
+  color: #dbefdb;
+  font-family: "Comic Sans MS", "Bradley Hand", cursive;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+/* Three columns rather than a centred flex row, so the claim stays optically
+   centred no matter how wide the socials or the join link get. */
+.proof-point-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 2.35rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 85rem;
+  padding: 0.3rem 1.25rem;
+}
+@media (min-width: 768px) {
+  .proof-point-inner { padding: 0.3rem 2.5rem; }
+}
+.proof-point-side {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+.proof-point-side-end { justify-content: flex-end; }
+.proof-point-label {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+/* The box is the tap target, the svg inside it is the glyph. */
+.proof-point-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+  flex: none;
+  color: currentColor;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.proof-point-icon svg {
+  height: 1rem;
+  width: 1rem;
+}
+.proof-point-icon:hover { opacity: 1; transform: translateY(-1px); }
+.proof-point-centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  white-space: nowrap;
+}
+.proof-point-join {
+  /* relative + ::after is the tap-target expansion; the bar has a fixed height,
+     so padding here would grow the bar rather than the target. */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(219, 239, 219, 0.35);
+  padding-bottom: 0.05rem;
+  transition: border-color 0.2s;
+}
+.proof-point-join::after {
+  content: "";
+  position: absolute;
+  inset: -0.45rem -0.3rem;
+}
+.proof-point-join:hover { border-bottom-color: #dbefdb; }
+.proof-point-strip a:focus-visible {
+  outline: 2px solid #dbefdb;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+.proof-point-text { animation: proof-point-in 0.45s ease both; }
+@keyframes proof-point-in { from { opacity: 0; transform: translateY(0.35rem) rotate(-1deg); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .proof-point-text { animation: none; }
+}
+@media (max-width: 640px) {
+  .proof-point-strip { font-size: 0.8rem; }
+  .proof-point-inner { gap: 0.5rem; padding: 0.3rem 0.9rem; }
+  .proof-point-label { display: none; }
+  .proof-point-centre { gap: 0.45rem; }
+  .proof-point-side { gap: 0.1rem; }
+  .proof-point-icon { width: 1.9rem; }
+  .proof-point-icon svg { height: 0.9rem; width: 0.9rem; }
+}
+@media (max-width: 519px) {
+  .proof-point-side:not(.proof-point-side-end) { display: none; }
+}
+@media (max-width: 359px) {
+  .proof-point-side-end { display: none; }
+}
+.home-mono {
+  font-family: var(--font-home-mono), ui-monospace, monospace;
+}
+
+/* --- brand lockup ------------------------------------------------------ */
+.cwp-logo {
+  --cwp-logo-h: 28px;
+}
+.cwp-logo-mark {
+  height: var(--cwp-logo-h);
+  width: auto;
+  flex: none;
+}
+.cwp-logo-word {
+  font-size: calc(var(--cwp-logo-h) * 0.58);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+/* Footer display size. It steps down on phones so the lockup never sets the
+ * footer card's minimum width. */
+.cwp-logo-lg {
+  --cwp-logo-h: 30px;
+}
+@media (min-width: 640px) {
+  .cwp-logo-lg {
+    --cwp-logo-h: 40px;
+  }
+}
+@media (max-width: 400px) {
+  .cwp-logo-header {
+    --cwp-logo-h: 23px;
+  }
+}
+@media (max-width: 359px) {
+  .cwp-logo-header .cwp-logo-word {
+    display: none;
+  }
+}
+
+/* Below the desktop nav breakpoint the header carries the logo, Donate and the
+ * menu toggle on one line. */
+@media (max-width: 639px) {
+  .home-btn-compact {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+}
+/* Section rhythm. One gap here, with two modifiers for the pairs that belong
+ * closer together. */
+.home-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--home-space-section);
+}
+.home-flow > .home-flow-attach { margin-top: calc(-1 * var(--home-space-section)); }
+.home-flow > .home-flow-close { margin-top: calc(-0.5 * var(--home-space-section)); }
+@media (min-width: 768px) {
+  .home-flow { gap: var(--home-space-section-lg); }
+  .home-flow > .home-flow-attach { margin-top: calc(-1 * var(--home-space-section-lg)); }
+  .home-flow > .home-flow-close { margin-top: calc(-0.5 * var(--home-space-section-lg)); }
+}
+
+/* A hairline plus a warm shadow, rather than a full-saturation fern outline.
+ * Cards that need to be picked out take .home-card-accent. */
+.home-card {
+  background: var(--home-white);
+  border: 1px solid var(--home-hairline);
+  box-shadow: var(--home-shadow-sm);
+}
+.home-card-accent {
+  border-color: rgba(62, 127, 92, 0.4);
+  box-shadow: var(--home-shadow-md);
+}
+.home-root a:not(.home-btn):not(.home-arrow-link) { text-decoration-color: var(--home-fern); }
+.home-root section, .home-root footer > div > div { border-color: var(--home-hairline); }
+.home-root .bg-white { background-color: var(--home-white); }
+
+/* Buttons: proper padding, a weight that separates the label from body copy,
+   and a size step below body text so a button reads as a control. */
+.home-btn {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.62rem 1.15rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.012em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s,
+    transform 0.12s;
+}
+.home-btn:active {
+  transform: scale(0.98);
+}
+.home-btn:focus-visible {
+  outline: 2px solid var(--home-fern);
+  outline-offset: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-btn:active { transform: none; }
+}
+.home-btn-fill {
+  background: var(--home-ink);
+  border-color: var(--home-ink);
+  color: #fff;
+  box-shadow: var(--home-shadow-sm);
+}
+.home-btn-fill:hover {
+  background: var(--home-ink-hover);
+  border-color: var(--home-ink-hover);
+  box-shadow: var(--home-shadow-md);
+}
+/* A hairline on the card surface rather than a hard ink outline. */
+.home-btn-outline {
+  background: var(--home-white);
+  border-color: var(--home-hairline-strong);
+  color: var(--home-ink);
+  box-shadow: var(--home-shadow-sm);
+}
+.home-btn-outline:hover {
+  border-color: var(--home-ink);
+  box-shadow: var(--home-shadow-md);
+}
+.home-btn-glass {
+  background: linear-gradient(rgba(224, 212, 196, 0.35), rgba(224, 212, 196, 0.35)),
+    rgba(255, 251, 245, 0.85);
+  border-color: rgba(224, 212, 196, 0.35);
+  color: var(--home-ink);
+}
+.home-btn-glass:hover {
+  background: linear-gradient(rgba(224, 212, 196, 0.5), rgba(224, 212, 196, 0.5)),
+    rgba(255, 251, 245, 0.85);
+}
+/* Enrolment buttons, sitewide. Same weight as .home-btn-fill. */
+.home-btn-violet {
+  background: var(--home-violet);
+  border-color: var(--home-violet);
+  color: #fff;
+  box-shadow: var(--home-shadow-sm);
+}
+.home-btn-violet:hover {
+  background: var(--home-violet-hover);
+  border-color: var(--home-violet-hover);
+  box-shadow: var(--home-shadow-md);
+}
+/* The global ring is fern, which reads as an unrelated accent on a violet
+ * button. */
+.home-btn-violet:focus-visible {
+  outline-color: var(--home-violet);
+}
+.home-btn-moss {
+  background: var(--home-moss);
+  border-color: var(--home-moss);
+  color: #fff;
+}
+.home-btn-moss:hover {
+  background: var(--home-moss-hover);
+  border-color: var(--home-moss-hover);
+}
+.home-arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--home-link-green);
+  font-size: 1rem;
+  line-height: 1.1;
+}
+.home-arrow-link .home-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease-out;
+}
+.home-arrow-link:hover .home-arrow {
+  transform: translateX(2px);
+}
+.home-nav-pill:has(a:hover, button:hover) > :not(:hover) {
+  opacity: 0.4;
+}
+.home-nav-pill > * {
+  transition: opacity 0.2s;
+}
+
+/* Grows a small control's tap target without touching layout. */
+.home-hit-expand {
+  position: relative;
+}
+.home-hit-expand::after {
+  content: "";
+  position: absolute;
+  inset: -0.4rem -0.3rem;
+}
+.home-footer-link {
+  position: relative;
+  display: inline-block;
+}
+.home-footer-link::before {
+  content: "";
+  position: absolute;
+  inset: -0.3rem -0.4rem;
+  border-radius: 0.375rem;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.home-footer-link:hover::before {
+  opacity: 0.08;
+}
+.home-lift {
+  transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1), background 0.3s,
+    box-shadow 0.3s, border-color 0.3s;
+}
+/* Lift and deepen the shadow rather than washing the surface beige. */
+.home-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--home-shadow-lg);
+  border-color: var(--home-hairline-strong);
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-lift:hover { transform: none; }
+}
+.home-row-arrow {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s ease-out;
+}
+.home-template-row:hover .home-row-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Touch devices have no hover — keep the affordance visible so accordion rows
+ * still read as expandable. */
+@media (hover: none) {
+  .home-row-arrow {
+    opacity: 1;
+    transform: none;
+  }
+}
+.home-chip {
+  transition: border-color 0.25s, background 0.25s;
+}
+.home-chip:hover {
+  border-color: var(--home-fern);
+  background: #f3faf3;
+}
+.home-chip-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: var(--home-fern);
+  animation: none;
+}
+.home-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: var(--home-fern);
+  animation: none;
+}
+@keyframes home-chip-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(62, 127, 92, 0.35);
+  }
+  55% {
+    box-shadow: 0 0 0 6px rgba(62, 127, 92, 0);
+  }
+  to {
+    box-shadow: 0 0 0 0 rgba(62, 127, 92, 0);
+  }
+}
+/* Decorative animation loops were removed from the global theme: the marks sit
+   still and only react to deliberate input. */
+.home-flow-dash {
+  stroke-dasharray: 3 5;
+  animation: none;
+}
+.home-blink {
+  animation: none;
+}
+@keyframes home-blink {
+  50% {
+    opacity: 0;
+  }
+}
+.cwp-cycle {
+  opacity: 1;
+}
+@keyframes cwp-cycle {
+  0%,
+  5% {
+    opacity: 0;
+    transform: translateY(4px);
+  },
+  11%,
+  86% {
+    opacity: 1;
+    transform: translateY(0);
+  },
+  94%,
+  to {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+.cwp-pulse {
+  animation: none;
+}
+.cwp-hero-bg {
+  background-image: radial-gradient(40rem 22rem at 88% -10%, rgba(219, 239, 219, 0.6), transparent 70%),
+    radial-gradient(32rem 18rem at -5% 110%, rgba(219, 239, 219, 0.45), transparent 70%),
+    radial-gradient(#ddd0be 1px, transparent 1px);
+  background-size: auto, auto, 22px 22px;
+  mask: linear-gradient(180deg, #000 60%, transparent);
+  pointer-events: none;
+}
+.cwp-spin {
+  animation: none;
+}
+@keyframes cwp-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes home-flow {
+  to {
+    stroke-dashoffset: -8;
+  }
+}
+.home-orbit {
+  animation: none;
+  transform-origin: 100px 100px;
+}
+@keyframes home-orbit {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* Expanding detail panel for the accordion rows. */
+.home-detail {
+  overflow: hidden;
+  max-height: 0;
+  transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    max-height 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.home-detail-open {
+  max-height: 1400px;
+}
+.home-detail-inner {
+  opacity: 0;
+  transform: translateX(20px);
+  padding-top: 12px;
+  transition: opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+.home-detail-open .home-detail-inner {
+  opacity: 1;
+  transform: translateX(0);
+}
+@media (min-width: 1200px) {
+  .home-detail {
+    max-height: none;
+    width: 0;
+  }
+  .home-detail-open {
+    max-height: none;
+    width: min(392px, 38vw);
+  }
+  .home-detail-inner {
+    width: min(392px, 38vw);
+    height: 100%;
+    padding-top: 0;
+    padding-left: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cwp-pulse,
+  .cwp-spin,
+  .home-flow-dash,
+  .home-live-dot,
+  .home-orbit {
+    animation: none;
+  }
+}
+
+/* Section eyebrow — the mono label above a section heading. */
+.home-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-home-mono), ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--home-ink-quiet);
+}
+.home-eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: var(--home-fern);
+  opacity: 0.5;
+}
+
+.home-root ::selection {
+  background: var(--home-pistachio);
+  color: var(--home-moss);
 }
