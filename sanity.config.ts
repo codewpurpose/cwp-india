@@ -22,6 +22,7 @@ export default defineConfig({
                 S.document().schemaType("siteContent").documentId("siteContent")
               ),
             S.divider(),
+            S.documentTypeListItem("chapter").title("Chapters"),
             S.documentTypeListItem("workshop").title("Workshops"),
             S.documentTypeListItem("faq").title("FAQs"),
           ]),

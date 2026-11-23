@@ -6,6 +6,7 @@ import { LINKS } from "@/lib/links";
 import { getFaqs } from "@/lib/sanity/queries";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
   title: "FAQ",
   description:
     "Frequently asked questions about CodeWithPurpose India — free workshops, events, chapters, and projects.",

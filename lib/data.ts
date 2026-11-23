@@ -20,8 +20,12 @@ export const FAQS = [
     a: "AI/ML, mathematics, programming, robotics and electronics, and research / general STEM. We rotate topics and add new ones based on what students ask for.",
   },
   {
+    q: "How do I join a local chapter?",
+    a: "Open Chapters on the homepage to see which chapters are accepting members. If you do not see your city, ask the India team and share where you are based.",
+  },
+  {
     q: "How do I start a CWP India chapter?",
-    a: "Fill out the Join Us form at codewithpurpose.org/join or contact us directly. We'll connect you with mentors and help you organise your first workshop.",
+    a: "Use the Chapters section on our homepage to send the India team a chapter enquiry. Tell us your city, school or college, and what you would like to organise.",
   },
   {
     q: "How can I volunteer as a mentor or speaker?",
@@ -34,6 +38,7 @@ export const FAQS = [
 ];
 
 export const CONTACT_REASONS = [
+  "Joining a CWP India chapter near me",
   "Starting a CWP India chapter at my school or college",
   "Hosting a workshop or event together",
   "Partnership with a STEM organisation",
@@ -108,12 +113,14 @@ export const FOOTER_LEARN = [
 ];
 
 export const FOOTER_INVOLVED = [
+  { label: "Join or Start a Chapter", href: "chapters" as const },
   { label: "Volunteer", href: "join" as const },
   { label: "Donate", href: "donate" as const },
   { label: "Contact Us", href: "contact" as const },
 ];
 
 export const FOOTER_RESOURCES = [
+  { label: "Events", href: "workshops" as const },
   { label: "FAQ", href: "faq" as const },
   { label: "CodeWithPurpose Global", href: "home" as const },
 ];

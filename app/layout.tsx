@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { INDIA_SITE_URL } from "@/lib/links";
 import { Archivo, Fraunces, Fredoka, Spline_Sans_Mono } from "next/font/google";
 import "./globals.css";
 import "./cartoon-home.css";
@@ -34,6 +35,7 @@ const playfulHeading = Fredoka({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(INDIA_SITE_URL),
   title: {
     default: SITE_TITLE,
     template: `%s | ${SITE_NAME}`,
@@ -47,9 +49,6 @@ export const metadata: Metadata = {
     "coding education for students in india",
     "CodeWithPurpose India",
   ],
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     title: "Free Education for Every Student in India | CodeWithPurpose India",
     description:

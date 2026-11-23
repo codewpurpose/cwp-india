@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { INQUIRIES, type InquiryIntent } from "@/lib/inquiries";
 import { CONTACT_REASONS } from "@/lib/data";
+import { CONTACT_EMAIL, LINKS } from "@/lib/links";
 
 const inputClass =
   "w-full rounded-lg border border-[var(--home-hairline-strong)] bg-[var(--home-white)] px-3.5 py-2.5 text-sm text-[var(--home-ink)] placeholder:text-[var(--home-ink-quiet)] focus:border-[var(--home-fern)] focus:outline-none focus:ring-2 focus:ring-[var(--home-fern)]/30";
@@ -11,7 +13,14 @@ const labelClass =
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-export function ContactForm() {
+export function ContactForm({
+  intent,
+  chapter,
+}: {
+  intent?: InquiryIntent;
+  chapter?: string;
+}) {
+  const inquiry = intent ? INQUIRIES[intent] : undefined;
   const [status, setStatus] = useState<Status>("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -23,6 +32,7 @@ export function ContactForm() {
       "access_key",
       process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? ""
     );
+    if (chapter) data.set("chapter", chapter);
     data.append("subject", `[CWP India] ${data.get("reason")} — ${data.get("name")}`);
     data.append("from_name", "CWP India Contact Form");
 
@@ -33,7 +43,7 @@ export function ContactForm() {
         body: data,
       });
       const json = await res.json();
-      if (json.success) {
+      if (res.ok && json.success === true) {
         form.reset();
         setStatus("sent");
       } else {
@@ -46,16 +56,16 @@ export function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="flex h-full flex-col items-start justify-center gap-3">
+      <div role="status" className="flex h-full flex-col items-start justify-center gap-3">
         <h2 className="home-serif text-xl">Message sent!</h2>
         <p className="text-sm leading-[1.6] text-[var(--home-ink-soft)]">
           Thanks for reaching out — we&apos;ll get back to you soon. In a hurry?
           Email us directly at{" "}
           <a
-            href="mailto:team@codewithpurpose.org"
+            href={LINKS.email}
             className="text-[var(--home-link-green)] underline underline-offset-2"
           >
-            team@codewithpurpose.org
+            {CONTACT_EMAIL}
           </a>
           .
         </p>
@@ -103,14 +113,18 @@ export function ContactForm() {
           placeholder="e.g. Bengaluru, Karnataka"
         />
       </label>
-      <label className="block">
-        <span className={labelClass}>Reason</span>
-        <select name="reason" className={inputClass}>
-          {CONTACT_REASONS.map((r) => (
-            <option key={r}>{r}</option>
-          ))}
-        </select>
-      </label>
+      {inquiry ? (
+        <input type="hidden" name="reason" value={inquiry.label} />
+      ) : (
+        <label className="block">
+          <span className={labelClass}>Reason</span>
+          <select name="reason" className={inputClass}>
+            {CONTACT_REASONS.map((r) => (
+              <option key={r}>{r}</option>
+            ))}
+          </select>
+        </label>
+      )}
       <label className="block">
         <span className={labelClass}>Message</span>
         <textarea
@@ -118,11 +132,11 @@ export function ContactForm() {
           rows={5}
           required
           className={`${inputClass} resize-none`}
-          placeholder="Tell us what you have in mind..."
+          placeholder={inquiry?.prompt ?? "Tell us what you have in mind..."}
         />
       </label>
       {status === "error" && (
-        <p className="text-sm text-red-600">
+        <p role="alert" className="text-sm text-red-600">
           Something went wrong — please try again or email us directly.
         </p>
       )}

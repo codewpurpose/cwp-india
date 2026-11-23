@@ -1,3 +1,9 @@
+export type Chapter = {
+  _id: string;
+  name: string;
+  location: string;
+};
+
 export type Workshop = {
   _id: string;
   title: string;

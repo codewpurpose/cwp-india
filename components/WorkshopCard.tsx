@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Workshop } from "@/lib/sanity/types";
+import { LINKS } from "@/lib/links";
 import { urlFor } from "@/lib/sanity/client";
 
 function formatDate(iso: string) {
@@ -19,7 +20,13 @@ function formatDate(iso: string) {
   return { date, time };
 }
 
-export function WorkshopCard({ workshop }: { workshop: Workshop }) {
+export function WorkshopCard({
+  workshop,
+  upcoming = false,
+}: {
+  workshop: Workshop;
+  upcoming?: boolean;
+}) {
   const { date, time } = formatDate(workshop.date);
   const posterUrl = workshop.poster
     ? urlFor(workshop.poster)?.width(800).height(450).url()
@@ -50,9 +57,9 @@ export function WorkshopCard({ workshop }: { workshop: Workshop }) {
         <h3 className="home-serif mt-4 text-lg leading-snug">
           {workshop.title}
         </h3>
-        <p className="home-mono mt-2 text-xs text-[var(--home-ink-quiet)]">
+        <time dateTime={workshop.date} className="home-mono mt-2 block text-sm text-[var(--home-ink-quiet)]">
           {date} · {time} IST
-        </p>
+        </time>
         {workshop.venue && (
           <p className="mt-1 text-xs text-[var(--home-ink-quiet)]">
             {workshop.venue}
@@ -73,14 +80,12 @@ export function WorkshopCard({ workshop }: { workshop: Workshop }) {
             ))}
           </div>
         )}
-        {workshop.status === "upcoming" && workshop.registrationUrl && (
+        {upcoming && (
           <a
-            href={workshop.registrationUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="home-arrow-link mt-5 self-start"
+            href={workshop.registrationUrl || LINKS.contact}
+            className="home-btn home-btn-outline mt-5 self-start"
           >
-            Register <span className="home-arrow">→</span>
+            {workshop.registrationUrl ? "Register" : "Ask how to attend"}
           </a>
         )}
       </div>

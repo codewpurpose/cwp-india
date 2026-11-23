@@ -6,10 +6,12 @@ import { CwpLogo, GitHubIcon, InstagramIcon, XIcon } from "@/components/icons";
 import { LINKS } from "@/lib/links";
 
 const NAV_LINKS = [
-  { href: LINKS.workshops, label: "Workshops" },
+  { href: LINKS.chapters, label: "Chapters" },
+  { href: LINKS.workshops, label: "Events" },
   { href: LINKS.contact, label: "Contact" },
   { href: LINKS.faq, label: "FAQ" },
   { href: LINKS.about, label: "About Us" },
+  { href: LINKS.home, label: "CodeWithPurpose Global" },
 ];
 
 const GLASS_STYLE = {
@@ -74,8 +76,8 @@ function ProofPointStrip() {
           <span aria-hidden="true">✦</span>
         </p>
         <div className="proof-point-side proof-point-side-end">
-          <a href={LINKS.join} className="proof-point-join">
-            Join us <span aria-hidden="true">→</span>
+          <a href={LINKS.chapters} className="proof-point-join">
+            Join a chapter
           </a>
         </div>
       </div>
@@ -197,7 +199,7 @@ export function SiteHeader() {
               ref={menuRef}
               id="home-mobile-menu"
               aria-label="Primary"
-              className="absolute inset-x-0 top-full z-20 mx-4 flex flex-col rounded-xl p-2 backdrop-blur-[10px] sm:mx-5 md:mx-10 min-[1200px]:hidden"
+              className="absolute inset-x-0 top-full z-20 mx-4 flex max-h-[calc(100dvh-5rem)] flex-col overflow-y-auto rounded-xl p-2 backdrop-blur-[10px] sm:mx-5 md:mx-10 min-[1200px]:hidden"
               style={GLASS_STYLE}
             >
               {NAV_LINKS.map((link) => (

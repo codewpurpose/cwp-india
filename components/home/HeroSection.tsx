@@ -16,7 +16,8 @@ export function HeroSection({
   description?: string;
 }) {
   return (
-    <section className="overflow-x-clip pt-8 md:pt-[3.69rem]">
+    <section className="relative isolate overflow-x-clip pt-8 md:pt-[3.69rem]">
+      <div className="home-india-flag" aria-hidden="true" />
       <div className="mx-auto w-full max-w-[85rem] px-5 md:px-10">
         <h1 className="home-display text-center text-[2rem] leading-[1.05] tracking-[-0.02em] md:text-[2.75rem] lg:text-[3.5rem] xl:text-[4rem]">
           {title ?? (
@@ -32,11 +33,11 @@ export function HeroSection({
             "CWP India is the India chapter of CodeWithPurpose — students running free coding workshops, hackathons, and school chapters across the country. Taught by students, open to every student, priced at nothing."}
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-          <a href={LINKS.courses} className="home-btn home-btn-fill">
-            Explore courses
+          <a href={LINKS.chapters} className="home-btn home-btn-fill">
+            Join or start a chapter
           </a>
-          <a href={LINKS.about} className="home-btn home-btn-outline">
-            Our Story
+          <a href={LINKS.workshops} className="home-btn home-btn-outline">
+            Find events
           </a>
         </div>
       </div>

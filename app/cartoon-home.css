@@ -37,6 +37,42 @@
   outline-offset: 3px;
 }
 
+/* The tricolour stays behind the introductory copy and fades at the sides. */
+.home-india-flag {
+  position: absolute;
+  z-index: -1;
+  inset: 0 0 auto;
+  height: clamp(20rem, 36vw, 24rem);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    #ff993344,
+    #ff993322 31%,
+    #ffffff99 37%,
+    #ffffff99 63%,
+    #1388081c 69%,
+    #1388082e 88%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, black 16%, black 84%, transparent);
+}
+
+.home-india-flag::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(6rem, 11vw, 8rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  color: #162855;
+  opacity: 0.11;
+  background: radial-gradient(circle, currentColor 0 7%, transparent 8%),
+    repeating-conic-gradient(from -1deg, currentColor 0deg 2deg, transparent 2deg 15deg);
+}
+
 /* Stats sit on a drawn route rather than in a row of tiles. */
 .cartoon-home .home-stats-roadmap {
   position: relative;

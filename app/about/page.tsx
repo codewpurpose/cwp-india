@@ -33,8 +33,8 @@ export default function AboutPage() {
         }
         description="CWP India is the India chapter of CodeWithPurpose — a student-run nonprofit recognized by the U.S. House of Representatives. We run free workshops, help students open chapters at their schools, and turn beginners into builders."
       >
-        <a href={LINKS.join} className="home-btn home-btn-fill">
-          Join Us
+        <a href={LINKS.chapters} className="home-btn home-btn-fill">
+          Join or start a chapter
         </a>
         <a href={LINKS.aboutGlobal} className="home-btn home-btn-outline">
           The Global Story

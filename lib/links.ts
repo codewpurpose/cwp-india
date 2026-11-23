@@ -1,5 +1,10 @@
 const CWP = "https://www.codewithpurpose.org";
 
+export const INDIA_SITE_URL = "https://india.codewithpurpose.org";
+export const CONTACT_EMAIL = "team@codewithpurpose.org";
+
+const email = `mailto:${CONTACT_EMAIL}`;
+
 export const LINKS = {
   courses: `${CWP}/courses`,
   aboutGlobal: `${CWP}/about`,
@@ -8,6 +13,7 @@ export const LINKS = {
   home: CWP,
 
   about: "/about",
+  chapters: "/#chapters",
   contact: "/contact",
   faq: "/faq",
   workshops: "/workshops",
@@ -18,7 +24,7 @@ export const LINKS = {
   github: "https://github.com/codewpurpose/cwp-india",
 
   discord: "https://discord.gg/8xqYFPD5fk",
-  email: "mailto:team@codewithpurpose.org",
+  email,
 
   python: "https://www.udemy.com/course/introduction-to-python-bootcamp/",
   vibecoding: "https://www.udemy.com/course/vibecoding-101/",
