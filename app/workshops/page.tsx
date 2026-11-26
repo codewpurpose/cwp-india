@@ -25,7 +25,7 @@ export default async function WorkshopsPage() {
     <PageShell>
       <PageHero
         eyebrow={content?.workshopsEyebrow ?? "Workshops & events"}
-        title={content?.workshopsTitle ?? "Learn by building, together."}
+        title={content?.workshopsTitle ?? "Coding workshops in India"}
         description={
           content?.workshopsDescription ??
           "Find free online and in-person coding workshops from CodeWithPurpose India."

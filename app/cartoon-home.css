@@ -12,6 +12,33 @@
   background: var(--home-page);
   color: var(--home-ink);
 }
+.chapter-contact {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 6rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+.chapter-contact:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(21, 18, 12, 0.1);
+}
+.chapter-contact strong, .chapter-contact span span { display: block; }
+.chapter-contact strong { font-size: 1rem; }
+.chapter-contact span span { margin-top: 0.25rem; font-size: 0.875rem; line-height: 1.4; overflow-wrap: anywhere; }
+.chapter-contact-icon { display: grid; width: 2.75rem; height: 2.75rem; flex: none; place-items: center; border-radius: 0.8rem; }
+.chapter-contact-icon svg { width: 1.4rem; height: 1.4rem; }
+.chapter-discord { background: #5865f2; color: white; }
+.chapter-discord .chapter-contact-icon { background: rgba(255, 255, 255, 0.16); }
+.chapter-email { background: #fffbf5; border-color: rgba(30, 60, 44, 0.16); color: #203b2e; }
+.chapter-email .chapter-contact-icon { background: #e7eee7; }
+@media (prefers-reduced-motion: reduce) {
+  .chapter-contact { transition: none; }
+  .chapter-contact:hover { transform: none; }
+}
 .cartoon-home h1,
 .cartoon-home h2,
 .cartoon-home .home-display,
@@ -35,42 +62,6 @@
 .cartoon-home button:focus-visible {
   outline: 2px solid #397554;
   outline-offset: 3px;
-}
-
-/* The tricolour stays behind the introductory copy and fades at the sides. */
-.home-india-flag {
-  position: absolute;
-  z-index: -1;
-  inset: 0 0 auto;
-  height: clamp(20rem, 36vw, 24rem);
-  pointer-events: none;
-  background: linear-gradient(
-    to bottom,
-    #ff993344,
-    #ff993322 31%,
-    #ffffff99 37%,
-    #ffffff99 63%,
-    #1388081c 69%,
-    #1388082e 88%,
-    transparent
-  );
-  mask-image: linear-gradient(to right, transparent, black 16%, black 84%, transparent);
-}
-
-.home-india-flag::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: clamp(6rem, 11vw, 8rem);
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  border: 2px solid currentColor;
-  border-radius: 50%;
-  color: #162855;
-  opacity: 0.11;
-  background: radial-gradient(circle, currentColor 0 7%, transparent 8%),
-    repeating-conic-gradient(from -1deg, currentColor 0deg 2deg, transparent 2deg 15deg);
 }
 
 /* Stats sit on a drawn route rather than in a row of tiles. */

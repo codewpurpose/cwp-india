@@ -15,7 +15,7 @@ export const LINKS = {
   about: "/about",
   chapters: "/#chapters",
   contact: "/contact",
-  faq: "/faq",
+  faq: "/about#faq",
   workshops: "/workshops",
   index: "/",
 

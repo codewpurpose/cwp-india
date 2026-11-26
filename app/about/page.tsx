@@ -3,8 +3,10 @@ import { PageShell } from "@/components/PageShell";
 import { PageHero, PageSection } from "@/components/PageHero";
 import { Reveal } from "@/components/Reveal";
 import { FinalCtaSection } from "@/components/home/FinalCtaSection";
+import { FaqAccordion } from "@/components/FaqAccordion";
+import { getFaqs } from "@/lib/sanity/queries";
 import { LINKS } from "@/lib/links";
-import { ABOUT_BELIEFS, ABOUT_TIMELINE, LEADERSHIP } from "@/lib/data";
+import { ABOUT_TIMELINE, LEADERSHIP } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -19,25 +21,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const faqs = await getFaqs();
+
   return (
     <PageShell>
       <PageHero
-        eyebrow="About us"
-        title={
-          <>
-            India&apos;s students, teaching
-            <br />
-            India&apos;s students.
-          </>
-        }
-        description="CWP India is the India chapter of CodeWithPurpose — a student-run nonprofit recognized by the U.S. House of Representatives. We run free workshops, help students open chapters at their schools, and turn beginners into builders."
+        title="About CodeWithPurpose India"
+        description="We’re the India chapter of CodeWithPurpose, a student-run nonprofit that offers free coding education. We run workshops and help students organise chapters at their schools and colleges."
       >
         <a href={LINKS.chapters} className="home-btn home-btn-fill">
           Join or start a chapter
         </a>
-        <a href={LINKS.aboutGlobal} className="home-btn home-btn-outline">
-          The Global Story
+        <a href={LINKS.home} className="text-sm underline underline-offset-4">
+          Visit CodeWithPurpose
         </a>
       </PageHero>
 
@@ -45,12 +42,11 @@ export default function AboutPage() {
       <PageSection id="team">
         <Reveal>
           <div className="mb-8 max-w-2xl md:mb-10">
-            <p className="home-eyebrow mb-4">The team</p>
             <h2 className="home-serif text-[1.75rem] leading-[1.08] md:text-[2.5rem]">
-              Who runs CWP India.
+              The CWP India team
             </h2>
             <p className="mt-4 text-lg text-[var(--home-ink-soft)]">
-              Like everything else here, the India chapter is led by a student.
+              Our India chapter is led by Manit Mishra, with support from CodeWithPurpose’s co-founders.
             </p>
           </div>
         </Reveal>
@@ -103,23 +99,13 @@ export default function AboutPage() {
             </div>
           </Reveal>
         ))}
-        <Reveal delay={140}>
-          <div className="home-card mt-4 flex flex-col items-center gap-4 rounded-[20px] p-6 text-center sm:flex-row sm:justify-between sm:text-left">
-            <div>
-              <p className="font-medium">Want your photo on this page?</p>
-              <p className="mt-1 text-sm text-[var(--home-ink-soft)]">
-                Chapter leads, mentors, and organisers all started with one
-                message.
-              </p>
-            </div>
-            <a
-              href={LINKS.contact}
-              className="home-btn home-btn-outline shrink-0"
-            >
-              Get in Touch
-            </a>
-          </div>
-        </Reveal>
+        <div className="mt-6 rounded-xl border border-[var(--home-hairline)] p-6 md:p-8">
+          <h3 className="home-serif text-xl">CodeWithPurpose co-founders</h3>
+          <p className="mt-3 text-[var(--home-ink-soft)]">
+            Samanyu Goyal, Shreyan Mitra, and Bruhatt Rao are part of the CWP India team.
+          </p>
+          <a href={LINKS.aboutGlobal} className="home-arrow-link mt-4 inline-block">Meet the global team</a>
+        </div>
       </PageSection>
 
       {/* How we got here — one card, hairline-divided rows, like the main
@@ -167,85 +153,11 @@ export default function AboutPage() {
         </Reveal>
       </PageSection>
 
-      {/* Why India */}
-      <PageSection className="pt-0 md:pt-0">
-        <Reveal>
-          <div className="home-card-accent home-card grid items-center gap-8 rounded-[20px] p-6 sm:p-8 md:grid-cols-[1.1fr_0.9fr] md:p-12">
-            <div>
-              <p className="home-eyebrow mb-4 text-[var(--home-moss)]">
-                Why India, why now
-              </p>
-              <h2 className="home-serif text-[1.75rem] leading-[1.08] md:text-[2.375rem]">
-                The talent was always here. The access wasn&apos;t.
-              </h2>
-              <p className="mt-4 max-w-lg leading-relaxed text-[var(--home-ink-soft)]">
-                India produces more engineering aspirants than any country on
-                Earth — yet the first lesson in tech most students get is a
-                price tag. Coaching institutes and bootcamps charge lakhs for
-                skills a motivated student can pick up for free, given the
-                right people around them.
-              </p>
-              <p className="mt-4 max-w-lg leading-relaxed text-[var(--home-ink-soft)]">
-                We&apos;re those people. A workshop in a school classroom, a
-                mentor one grade ahead of you, a project you built yourself —
-                that&apos;s the whole model, and it works.
-              </p>
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="home-card w-full max-w-xs rounded-2xl px-8 py-8 text-center">
-                <p className="home-display text-5xl text-[var(--home-moss)] sm:text-6xl">
-                  ₹0
-                </p>
-                <p className="mt-2 text-sm text-[var(--home-ink-quiet)]">
-                  What any student ever pays —
-                  <br />
-                  for any workshop, course, or event
-                </p>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </PageSection>
-
-      {/* Beliefs — 2×2 hairline-divided grid inside one card, the main site's
-          product-section idiom, rather than four separate floating cards. */}
-      <PageSection className="pt-0 md:pt-0" id="beliefs">
-        <Reveal>
-          <div className="home-card overflow-hidden rounded-[20px]">
-            <div className="px-5 pt-7 sm:px-6 sm:pt-8 md:px-10 md:pt-12">
-              <p className="home-eyebrow mb-4">What we believe</p>
-              <h2 className="home-serif text-[1.75rem] leading-[1.08] md:text-[2.375rem]">
-                Four rules we don&apos;t bend.
-              </h2>
-            </div>
-            <div className="mt-8 grid border-t border-[var(--home-hairline)] md:mt-10 md:grid-cols-2">
-              {ABOUT_BELIEFS.map((b, i) => (
-                <div
-                  key={b.tag}
-                  className={`px-5 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12 ${
-                    i % 2 === 0
-                      ? "md:border-r-[0.5px] md:border-r-[var(--home-hairline)]"
-                      : ""
-                  } ${
-                    i < 2
-                      ? "border-b-[0.5px] border-b-[var(--home-hairline)]"
-                      : ""
-                  }`}
-                >
-                  <p className="home-mono text-[0.68rem] tracking-wider uppercase text-[var(--home-ink-quiet)]">
-                    {b.tag}
-                  </p>
-                  <h3 className="home-serif mt-3 text-[1.4rem] leading-snug">
-                    {b.title}
-                  </h3>
-                  <p className="mt-3 max-w-md text-[15px] leading-[1.6] text-[var(--home-ink-soft)]">
-                    {b.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
+      <PageSection className="pt-0 md:pt-0" id="faq">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="home-serif mb-6 text-3xl">Frequently asked questions</h2>
+          <FaqAccordion items={faqs} />
+        </div>
       </PageSection>
 
       <FinalCtaSection />

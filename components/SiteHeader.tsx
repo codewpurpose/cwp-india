@@ -2,16 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { CwpLogo, GitHubIcon, InstagramIcon, XIcon } from "@/components/icons";
+import { CwpLogo } from "@/components/icons";
 import { LINKS } from "@/lib/links";
 
 const NAV_LINKS = [
   { href: LINKS.chapters, label: "Chapters" },
   { href: LINKS.workshops, label: "Events" },
   { href: LINKS.contact, label: "Contact" },
-  { href: LINKS.faq, label: "FAQ" },
-  { href: LINKS.about, label: "About Us" },
-  { href: LINKS.home, label: "CodeWithPurpose Global" },
+  { href: LINKS.about, label: "About" },
 ];
 
 const GLASS_STYLE = {
@@ -29,59 +27,6 @@ function LogoLink() {
     >
       <CwpLogo className="cwp-logo-header" />
     </Link>
-  );
-}
-
-/**
- * The strip above the header: who to follow, what we have done, and one way in.
- * One stable claim rather than a rotating one — no timer, no re-render.
- */
-function ProofPointStrip() {
-  return (
-    <div className="proof-point-strip">
-      <div className="proof-point-inner">
-        <div className="proof-point-side">
-          <span className="proof-point-label" aria-hidden="true">Follow</span>
-          <a
-            href={LINKS.instagram}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="CodeWithPurpose on Instagram"
-            className="proof-point-icon"
-          >
-            <InstagramIcon />
-          </a>
-          <a
-            href={LINKS.x}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="CodeWithPurpose on X"
-            className="proof-point-icon"
-          >
-            <XIcon />
-          </a>
-          <a
-            href={LINKS.github}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="CodeWithPurpose on GitHub"
-            className="proof-point-icon"
-          >
-            <GitHubIcon />
-          </a>
-        </div>
-        <p className="proof-point-centre">
-          <span aria-hidden="true">✦</span>
-          <span className="proof-point-text">2,000+ students</span>
-          <span aria-hidden="true">✦</span>
-        </p>
-        <div className="proof-point-side proof-point-side-end">
-          <a href={LINKS.chapters} className="proof-point-join">
-            Join a chapter
-          </a>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -121,7 +66,6 @@ export function SiteHeader() {
 
   return (
     <>
-      <ProofPointStrip />
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-[var(--home-moss)] focus:px-4 focus:py-3 focus:text-sm focus:text-white focus:outline-none focus:ring-2 focus:ring-[var(--home-fern)] focus:ring-offset-2"

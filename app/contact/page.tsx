@@ -3,7 +3,7 @@ import { PageShell } from "@/components/PageShell";
 import { PageHero } from "@/components/PageHero";
 import { ContactForm } from "@/components/ContactForm";
 import { CONTACT_EMAIL, LINKS } from "@/lib/links";
-import { INQUIRIES, inquiryEmail, type InquiryIntent } from "@/lib/inquiries";
+import { inquiryEmail, type InquiryIntent } from "@/lib/inquiries";
 import { getChapters } from "@/lib/sanity/queries";
 
 export const metadata: Metadata = {
@@ -27,7 +27,6 @@ export default async function ContactPage({
     intent === "join" && typeof params.chapter === "string"
       ? (await getChapters()).find(({ _id }) => _id === params.chapter)?.name
       : undefined;
-  const inquiry = intent ? INQUIRIES[intent] : undefined;
   const email = intent ? inquiryEmail(intent, chapter) : LINKS.email;
   const hasContactForm = Boolean(process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY);
 
@@ -35,10 +34,9 @@ export default async function ContactPage({
     <PageShell>
       <PageHero
         eyebrow="Contact us"
-        title={chapter ? `Ask to join ${chapter}` : (inquiry?.label ?? "Contact CodeWithPurpose India")}
+        title="Connect with CodeWithPurpose India"
         description={
-          inquiry?.guidance ??
-          "Talk to us about chapters, workshops, mentoring or working together."
+          "Join our Discord or email the team about chapters, workshops, mentoring, or working together."
         }
       />
 

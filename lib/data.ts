@@ -46,51 +46,24 @@ export const CONTACT_REASONS = [
   "Anything else",
 ];
 
-export const ABOUT_BELIEFS = [
-  {
-    tag: "01",
-    title: "Free means free",
-    description:
-      "No premium tier, no trial that expires, no certificate locked behind a paywall. If we make it, every student in India gets it at the same price: nothing.",
-  },
-  {
-    tag: "02",
-    title: "Students teach students",
-    description:
-      "Our instructors are teenagers who were sitting where you're sitting a year or two ago. They remember what's confusing, because it confused them recently.",
-  },
-  {
-    tag: "03",
-    title: "You build from day one",
-    description:
-      "Nobody learns to swim by watching videos about water. Every workshop ends with working code on your screen and a project with your name on it.",
-  },
-  {
-    tag: "04",
-    title: "Chapters, not audiences",
-    description:
-      "We're not building a subscriber count. We're building rooms — in schools, colleges, and cities — where students show up for each other every week.",
-  },
-];
-
 export const ABOUT_TIMELINE = [
   {
     when: "The beginning",
     title: "Three students in California",
     description:
-      "CodeWithPurpose started when Shreyan, Bruhatt, and Samanyu saw bootcamps charging $15,000 for skills that should be public. They decided to just teach it themselves — for free.",
+      "Shreyan, Bruhatt, and Samanyu started CodeWithPurpose to teach coding for free.",
   },
   {
     when: "Going global",
-    title: "150+ countries, one promise",
+    title: "Students in more than 150 countries",
     description:
-      "Workshops, courses, and chapters spread across six continents. In March 2026, the U.S. House of Representatives recognized CWP for leadership and service to the community.",
+      "Students in more than 150 countries have used CodeWithPurpose. In March 2026, U.S. Representative Mark DeSaulnier recognised the organisation’s work.",
   },
   {
     when: "Today",
     title: "CWP India",
     description:
-      "India has more young people than anywhere on Earth — and some of the steepest price tags on tech education. CWP India exists to close that gap, one chapter at a time.",
+      "The India team runs free workshops and helps students start local chapters.",
   },
 ];
 
